@@ -42,10 +42,10 @@ export default function Navbar({ lang }: Props) {
       <div className="max-w-6xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
         {/* Logo */}
         <Link href={lang === "es" ? "/" : "/en"} className="flex flex-col leading-none">
-          <span className="font-serif text-sm font-semibold tracking-wide text-[#f5f0e8]">
+          <span className="font-serif text-xl font-semibold tracking-wide text-[#f5f0e8]">
             Rodrigo Escobar Gil
           </span>
-          <span className="text-[10px] tracking-[0.2em] uppercase text-[#c9a84c] font-sans font-medium mt-0.5">
+          <span className="text-[10px] tracking-[0.25em] uppercase text-[#c9a84c] font-sans font-medium mt-1">
             Jurista · Consultor
           </span>
         </Link>
