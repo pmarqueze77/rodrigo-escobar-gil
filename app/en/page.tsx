@@ -13,11 +13,22 @@ export const metadata: Metadata = {
   title: "Rodrigo Escobar Gil | Jurist, Former Justice & Legal Counsel — Colombia",
   description:
     "Former Justice and President of the Constitutional Court of Colombia. IACHR Commissioner — OAS. PhD in Administrative Law. Legal counsel specializing in public law, constitutional law, and human rights.",
+  keywords: [
+    "Rodrigo Escobar Gil",
+    "Colombian jurist",
+    "Constitutional Court Colombia",
+    "IACHR Commissioner",
+    "legal counsel Bogotá",
+    "public law Colombia",
+    "human rights lawyer",
+    "arbitration Colombia",
+  ],
   alternates: {
-    canonical: "https://rodrigoescobargil.com/en",
+    canonical: "https://rodrigoescobargil.co/en",
     languages: {
-      "es-CO": "https://rodrigoescobargil.com",
-      "en-US": "https://rodrigoescobargil.com/en",
+      "es-CO": "https://rodrigoescobargil.co",
+      "en-US": "https://rodrigoescobargil.co/en",
+      "x-default": "https://rodrigoescobargil.co",
     },
   },
 };

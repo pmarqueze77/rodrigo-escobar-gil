@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://rodrigoescobargil.com/sitemap.xml",
+    sitemap: "https://rodrigoescobargil.co/sitemap.xml",
   };
 }

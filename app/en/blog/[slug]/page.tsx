@@ -14,18 +14,46 @@ export async function generateStaticParams() {
   return blogPostsEn.map((p) => ({ slug: p.slug }));
 }
 
+const BASE = "https://rodrigoescobargil.co";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = blogPostsEn.find((p) => p.slug === params.slug);
   if (!post) return {};
   return {
     title: `${post.title} | Rodrigo Escobar Gil`,
     description: post.excerpt,
+    keywords: [
+      "Rodrigo Escobar Gil",
+      post.category,
+      "Colombian constitutional law",
+      "administrative law Colombia",
+      "human rights Colombia",
+    ],
+    authors: [{ name: "Rodrigo Escobar Gil", url: BASE }],
+    alternates: {
+      canonical: `${BASE}/en/blog/${post.slug}`,
+      languages: {
+        "es-CO": `${BASE}/blog/${post.slug}`,
+        "en-US": `${BASE}/en/blog/${post.slug}`,
+        "x-default": `${BASE}/blog/${post.slug}`,
+      },
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
+      url: `${BASE}/en/blog/${post.slug}`,
+      siteName: "Rodrigo Escobar Gil",
+      locale: "en_US",
       authors: ["Rodrigo Escobar Gil"],
       publishedTime: post.date,
+      images: [{ url: `${BASE}/og-image.jpg`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [`${BASE}/og-image.jpg`],
     },
   };
 }
@@ -39,8 +67,40 @@ export default function BlogPostEn({ params }: Props) {
   const post = blogPostsEn.find((p) => p.slug === params.slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    url: `${BASE}/en/blog/${post.slug}`,
+    inLanguage: "en-US",
+    author: {
+      "@type": "Person",
+      "@id": `${BASE}/#person`,
+      name: "Rodrigo Escobar Gil",
+      url: BASE,
+    },
+    publisher: {
+      "@type": "LegalService",
+      "@id": `${BASE}/#firm`,
+      name: "Rodrigo Escobar Gil Consultores",
+      url: BASE,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE}/en/blog/${post.slug}`,
+    },
+    image: `${BASE}/og-image.jpg`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar lang="en" />
       <main className="min-h-screen bg-[#0a0a0a] pt-28 pb-28">
         <div className="max-w-2xl mx-auto px-6 md:px-12">

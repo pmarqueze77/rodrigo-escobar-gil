@@ -8,6 +8,21 @@ export const metadata: Metadata = {
   title: "Columnas de Opinión | Rodrigo Escobar Gil",
   description:
     "Análisis jurídico y reflexión académica sobre derecho constitucional, administrativo y derechos humanos, por Rodrigo Escobar Gil.",
+  keywords: [
+    "Rodrigo Escobar Gil columnas",
+    "derecho constitucional Colombia",
+    "derecho administrativo Colombia",
+    "derechos humanos Colombia",
+    "análisis jurídico Colombia",
+  ],
+  alternates: {
+    canonical: "https://rodrigoescobargil.co/blog",
+    languages: {
+      "es-CO": "https://rodrigoescobargil.co/blog",
+      "en-US": "https://rodrigoescobargil.co/en/blog",
+      "x-default": "https://rodrigoescobargil.co/blog",
+    },
+  },
 };
 
 function formatDate(dateStr: string): string {

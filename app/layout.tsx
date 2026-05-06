@@ -17,32 +17,42 @@ const inter = Inter({
   display: "swap",
 });
 
+const BASE = "https://rodrigoescobargil.co";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rodrigoescobargil.com"),
+  metadataBase: new URL(BASE),
   title: "Rodrigo Escobar Gil | Jurista, Exmagistrado y Consultor — Colombia",
   description:
-    "Exmagistrado y Presidente de la Corte Constitucional de Colombia. Comisionado CIDH–OEA. Doctor en Derecho Administrativo. Consultor jurídico especializado en derecho público, constitucional y derechos humanos.",
+    "Exmagistrado y Presidente de la Corte Constitucional de Colombia (2001–2009). Vicepresidente y Comisionado CIDH–OEA (2010–2014). Doctor en Derecho Administrativo. Consultor jurídico en derecho público, constitucional, derechos humanos y arbitraje.",
   keywords: [
     "Rodrigo Escobar Gil",
-    "exmagistrado Corte Constitucional",
+    "exmagistrado Corte Constitucional Colombia",
+    "Presidente Corte Constitucional",
     "abogado Colombia",
-    "derecho constitucional",
-    "derecho administrativo",
-    "derechos humanos",
-    "CIDH",
     "consultor jurídico Bogotá",
+    "derecho constitucional Colombia",
+    "derecho administrativo Colombia",
+    "derechos humanos Colombia",
+    "CIDH comisionado",
+    "OEA derechos humanos",
+    "árbitro Colombia",
+    "arbitraje derecho público",
+    "contratación estatal Colombia",
+    "Rodrigo Escobar Gil Consultores",
+    "abogado derecho público Bogotá",
   ],
-  authors: [{ name: "Rodrigo Escobar Gil" }],
+  authors: [{ name: "Rodrigo Escobar Gil", url: BASE }],
   creator: "Rodrigo Escobar Gil",
+  publisher: "Rodrigo Escobar Gil Consultores",
   openGraph: {
     type: "website",
     locale: "es_CO",
-    alternateLocale: "en_US",
-    url: "https://rodrigoescobargil.com",
+    alternateLocale: ["en_US"],
+    url: BASE,
     siteName: "Rodrigo Escobar Gil",
     title: "Rodrigo Escobar Gil | Jurista, Exmagistrado y Consultor",
     description:
-      "Exmagistrado y Presidente de la Corte Constitucional de Colombia. Comisionado CIDH–OEA. Consultor jurídico en derecho público y derechos humanos.",
+      "Exmagistrado y Presidente de la Corte Constitucional de Colombia. Vicepresidente y Comisionado CIDH–OEA. Consultor en derecho público, constitucional y derechos humanos.",
     images: [
       {
         url: "/og-image.jpg",
@@ -56,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rodrigo Escobar Gil | Jurista y Consultor",
     description:
-      "Exmagistrado y Presidente de la Corte Constitucional de Colombia. Comisionado CIDH–OEA.",
+      "Exmagistrado y Presidente de la Corte Constitucional de Colombia. Vicepresidente y Comisionado CIDH–OEA.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -71,52 +81,132 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://rodrigoescobargil.com",
+    canonical: BASE,
     languages: {
-      "es-CO": "https://rodrigoescobargil.com",
-      "en-US": "https://rodrigoescobargil.com/en",
+      "es-CO": BASE,
+      "en-US": `${BASE}/en`,
+      "x-default": BASE,
     },
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Rodrigo Escobar Gil",
-  jobTitle: "Jurista, Consultor Jurídico y Exmagistrado",
-  description:
-    "Exmagistrado y Presidente de la Corte Constitucional de Colombia (2001–2009). Comisionado y Relator de la CIDH–OEA (2010–2014). Doctor en Derecho Administrativo, Universidad Complutense de Madrid.",
-  url: "https://rodrigoescobargil.com",
-  image: "https://rodrigoescobargil.com/og-image.jpg",
-  alumniOf: [
+  "@graph": [
     {
-      "@type": "CollegeOrUniversity",
-      name: "Pontificia Universidad Javeriana",
-      address: { "@type": "PostalAddress", addressLocality: "Bogotá", addressCountry: "CO" },
+      "@type": "Person",
+      "@id": `${BASE}/#person`,
+      name: "Rodrigo Escobar Gil",
+      honorificPrefix: "Dr.",
+      jobTitle: "Jurista, Consultor Jurídico y Árbitro",
+      description:
+        "Exmagistrado y Presidente de la Corte Constitucional de Colombia (2001–2009). Vicepresidente y Comisionado de la CIDH–OEA (2010–2014). Doctor en Derecho Administrativo, Universidad Complutense de Madrid. Árbitro en tribunales nacionales e internacionales.",
+      url: BASE,
+      image: `${BASE}/og-image.jpg`,
+      email: "info@rodrigoescobargil.co",
+      telephone: "+5716206246",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Calle 118 No. 5-33, Piso 3",
+        addressLocality: "Bogotá",
+        addressRegion: "D.C.",
+        addressCountry: "CO",
+      },
+      alumniOf: [
+        {
+          "@type": "CollegeOrUniversity",
+          name: "Pontificia Universidad Javeriana",
+          address: { "@type": "PostalAddress", addressLocality: "Bogotá", addressCountry: "CO" },
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          name: "Universidad Complutense de Madrid",
+          address: { "@type": "PostalAddress", addressLocality: "Madrid", addressCountry: "ES" },
+        },
+      ],
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "degree",
+          name: "Doctor en Derecho Administrativo, Cum Laude",
+          recognizedBy: { "@type": "CollegeOrUniversity", name: "Universidad Complutense de Madrid" },
+        },
+      ],
+      award: [
+        "Condecoración José Ignacio de Márquez, medalla de oro — Consejo Superior de la Judicatura (2007, 2009)",
+        "Orden Rafael Núñez, Gran Oficial — Gobernación de Bolívar (2007)",
+        "Medalla Cívica de Cartagena de Indias, Gran Oficial (2007)",
+        "Beca José María Samper — Banco de la República (1984)",
+      ],
+      knowsAbout: [
+        "Derecho Constitucional",
+        "Derecho Administrativo",
+        "Contratación Estatal",
+        "Derechos Humanos",
+        "Derecho Internacional de los Derechos Humanos",
+        "Sistema Interamericano de Derechos Humanos",
+        "Arbitraje Nacional e Internacional",
+        "Derecho Público",
+        "Responsabilidad del Estado",
+        "Consulta Previa",
+      ],
+      worksFor: { "@id": `${BASE}/#firm` },
+      memberOf: [
+        {
+          "@type": "Organization",
+          name: "Comisión Interamericana de Derechos Humanos",
+          url: "https://www.oas.org/es/cidh/",
+        },
+        {
+          "@type": "Organization",
+          name: "Academia Colombiana de la Abogacía",
+        },
+      ],
+      sameAs: [
+        "https://www.oas.org/es/cidh/ppl/docs/pdf/CVEscobarGilVEES.pdf",
+        "https://dialnet.unirioja.es/servlet/autor?codigo=531354",
+        "https://www.corteconstitucional.gov.co",
+        "https://congresoppl.wordpress.com/250/252/rodrigo-escobar-gil-phd/",
+      ],
     },
     {
-      "@type": "CollegeOrUniversity",
-      name: "Universidad Complutense de Madrid",
-      address: { "@type": "PostalAddress", addressLocality: "Madrid", addressCountry: "ES" },
+      "@type": "LegalService",
+      "@id": `${BASE}/#firm`,
+      name: "Rodrigo Escobar Gil Consultores",
+      url: BASE,
+      telephone: "+5716206246",
+      email: "info@rodrigoescobargil.co",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Calle 118 No. 5-33, Piso 3",
+        addressLocality: "Bogotá",
+        addressRegion: "D.C.",
+        addressCountry: "CO",
+      },
+      areaServed: ["Colombia", "América Latina"],
+      knowsAbout: [
+        "Derecho Público",
+        "Derecho Constitucional",
+        "Derecho Administrativo",
+        "Derechos Humanos",
+        "Arbitraje",
+      ],
+      founder: { "@id": `${BASE}/#person` },
     },
-  ],
-  worksFor: {
-    "@type": "LegalService",
-    name: "Rodrigo Escobar Gil Consultores",
-    address: { "@type": "PostalAddress", addressLocality: "Bogotá", addressCountry: "CO" },
-  },
-  nationality: "Colombian",
-  knowsAbout: [
-    "Derecho Constitucional",
-    "Derecho Administrativo",
-    "Derechos Humanos",
-    "Derecho Internacional",
-    "Contratación Pública",
-  ],
-  sameAs: [
-    "https://www.oas.org/es/cidh/ppl/docs/pdf/CVEscobarGilVEES.pdf",
-    "https://dialnet.unirioja.es/servlet/autor?codigo=531354",
-    "https://www.corteconstitucional.gov.co",
+    {
+      "@type": "WebSite",
+      "@id": `${BASE}/#website`,
+      url: BASE,
+      name: "Rodrigo Escobar Gil",
+      description: "Sitio oficial de Rodrigo Escobar Gil, jurista y consultor jurídico colombiano.",
+      inLanguage: ["es-CO", "en-US"],
+      author: { "@id": `${BASE}/#person` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: `${BASE}/blog?q={search_term_string}` },
+        "query-input": "required name=search_term_string",
+      },
+    },
   ],
 };
 

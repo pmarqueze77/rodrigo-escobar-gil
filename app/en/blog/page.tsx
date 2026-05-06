@@ -8,6 +8,21 @@ export const metadata: Metadata = {
   title: "Opinion Columns | Rodrigo Escobar Gil",
   description:
     "Legal analysis and academic reflection on constitutional law, administrative law, and human rights, by Rodrigo Escobar Gil.",
+  keywords: [
+    "Rodrigo Escobar Gil columns",
+    "Colombian constitutional law",
+    "administrative law Colombia",
+    "human rights Colombia",
+    "legal analysis Colombia",
+  ],
+  alternates: {
+    canonical: "https://rodrigoescobargil.co/en/blog",
+    languages: {
+      "es-CO": "https://rodrigoescobargil.co/blog",
+      "en-US": "https://rodrigoescobargil.co/en/blog",
+      "x-default": "https://rodrigoescobargil.co/blog",
+    },
+  },
 };
 
 function formatDate(dateStr: string): string {
