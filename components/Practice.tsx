@@ -29,6 +29,10 @@ const icons = [
   <svg key="co" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
   </svg>,
+  /* Arbitration */
+  <svg key="ar" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/><path d="M8 12h8"/><path d="M9 9l6 6M15 9l-6 6"/>
+  </svg>,
 ];
 
 export default function Practice({ lang }: Props) {
@@ -83,20 +87,6 @@ export default function Practice({ lang }: Props) {
             </motion.div>
           ))}
 
-          {/* Filler card for 5-item grid on lg screens */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="hidden lg:flex bg-[#0a0a0a] items-end p-8"
-          >
-            <a
-              href="#contacto"
-              className="text-xs tracking-[0.2em] uppercase font-sans font-medium text-[#c9a84c] border-b border-[rgba(201,168,76,0.4)] pb-1 hover:border-[#c9a84c] transition-colors"
-            >
-              {lang === "es" ? "Consultar →" : "Inquire →"}
-            </a>
-          </motion.div>
         </div>
       </div>
     </section>
