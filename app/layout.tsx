@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -8,6 +8,9 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
+  preload: true,
+  fallback: ["Georgia", "serif"],
+  adjustFontFallback: true,
 });
 
 const inter = Inter({
@@ -15,7 +18,18 @@ const inter = Inter({
   variable: "--font-inter",
   weight: ["300", "400", "500", "600"],
   display: "swap",
+  preload: true,
+  fallback: ["system-ui", "Arial", "sans-serif"],
+  adjustFontFallback: true,
 });
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  colorScheme: "dark",
+};
 
 const BASE = "https://rodrigoescobargil.co";
 
@@ -218,12 +232,15 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
       <head>
+        <link rel="preload" as="image" href="/videos/hero-poster.jpg" fetchPriority="high" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta name="format-detection" content="telephone=no" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased min-h-screen">{children}</body>
     </html>
   );
 }

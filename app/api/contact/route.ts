@@ -1,26 +1,63 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+const MAX = { name: 120, email: 200, subject: 200, message: 5000 };
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, subject, message, lang } = body;
+    const name = String(body?.name ?? "").trim();
+    const email = String(body?.email ?? "").trim();
+    const subject = String(body?.subject ?? "").trim();
+    const message = String(body?.message ?? "").trim();
+    const lang = body?.lang === "en" ? "en" : "es";
 
     if (!name || !email || !subject || !message) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (
+      name.length > MAX.name ||
+      email.length > MAX.email ||
+      subject.length > MAX.subject ||
+      message.length > MAX.message
+    ) {
+      return NextResponse.json({ error: "Field too long" }, { status: 400 });
+    }
+    if (!EMAIL_RE.test(email)) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
-    const TO_EMAIL = process.env.CONTACT_EMAIL || "contacto@rodrigoescobargil.com";
+    const TO_EMAIL = process.env.CONTACT_EMAIL || "info@rodrigoescobargil.co";
+    const FROM_EMAIL =
+      process.env.RESEND_FROM_EMAIL || "noreply@rodrigoescobargil.co";
 
     if (!RESEND_API_KEY) {
       console.error("RESEND_API_KEY not configured");
-      return NextResponse.json({ error: "Email service not configured" }, { status: 500 });
+      return NextResponse.json(
+        { error: "Email service not configured" },
+        { status: 500 }
+      );
     }
+
+    const safe = {
+      name: escapeHtml(name),
+      email: escapeHtml(email),
+      subject: escapeHtml(subject),
+      message: escapeHtml(message),
+    };
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -29,25 +66,25 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "rodrigoescobargil.com <noreply@rodrigoescobargil.com>",
+        from: `Rodrigo Escobar Gil <${FROM_EMAIL}>`,
         to: [TO_EMAIL],
         reply_to: email,
         subject: `[Contacto Web${lang === "en" ? " EN" : ""}] ${subject}`,
         html: `
           <div style="font-family: Georgia, serif; max-width: 600px; color: #1a1a1a;">
             <h2 style="font-size: 20px; font-weight: 600; border-bottom: 1px solid #e0d9c8; padding-bottom: 12px; margin-bottom: 20px;">
-              Nuevo mensaje desde rodrigoescobargil.com
+              Nuevo mensaje desde rodrigoescobargil.co
             </h2>
             <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-              <tr><td style="padding: 8px 0; color: #666; width: 100px;">Nombre:</td><td style="padding: 8px 0;">${name}</td></tr>
-              <tr><td style="padding: 8px 0; color: #666;">Correo:</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #c9a84c;">${email}</a></td></tr>
-              <tr><td style="padding: 8px 0; color: #666;">Asunto:</td><td style="padding: 8px 0;">${subject}</td></tr>
+              <tr><td style="padding: 8px 0; color: #666; width: 100px;">Nombre:</td><td style="padding: 8px 0;">${safe.name}</td></tr>
+              <tr><td style="padding: 8px 0; color: #666;">Correo:</td><td style="padding: 8px 0;"><a href="mailto:${safe.email}" style="color: #c9a84c;">${safe.email}</a></td></tr>
+              <tr><td style="padding: 8px 0; color: #666;">Asunto:</td><td style="padding: 8px 0;">${safe.subject}</td></tr>
             </table>
             <div style="margin-top: 20px; padding: 16px; background: #f9f7f4; border-left: 3px solid #c9a84c;">
-              <p style="font-size: 14px; line-height: 1.7; color: #333; white-space: pre-wrap;">${message}</p>
+              <p style="font-size: 14px; line-height: 1.7; color: #333; white-space: pre-wrap;">${safe.message}</p>
             </div>
             <p style="font-size: 11px; color: #999; margin-top: 24px; border-top: 1px solid #e8e4dc; padding-top: 12px;">
-              Enviado desde rodrigoescobargil.com · Idioma: ${lang === "en" ? "English" : "Español"}
+              Enviado desde rodrigoescobargil.co · Idioma: ${lang === "en" ? "English" : "Español"}
             </p>
           </div>
         `,

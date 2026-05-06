@@ -22,6 +22,8 @@
 
 html {
   scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -30,10 +32,16 @@ body {
   font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
 }
 
 ::selection {
@@ -56,6 +64,39 @@ h1, h2, h3, h4 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gold);
+}
+
+/* Hero entry animations — pure CSS, no JS */
+.hero-fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroFadeIn 0.7s ease forwards;
+}
+.hero-delay-1 {
+  animation-delay: 700ms;
+}
+.hero-delay-2 {
+  animation-delay: 950ms;
+}
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @layer utilities {

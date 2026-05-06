@@ -87,7 +87,7 @@ export const translations = {
       success: "Mensaje enviado. Nos pondremos en contacto a la brevedad.",
       error: "Error al enviar. Por favor intente de nuevo.",
       office: "Calle 118 No. 5-33, Piso 3, Bogotá, D.C.",
-      email: "info@rodrigoescobargil.co",
+      emailAddress: "info@rodrigoescobargil.co",
       phone: "+57 (601) 620 6246",
     },
     footer: {
@@ -180,7 +180,7 @@ export const translations = {
       success: "Message sent. We will be in touch shortly.",
       error: "Error sending. Please try again.",
       office: "Calle 118 No. 5-33, Floor 3, Bogotá, D.C.",
-      email: "info@rodrigoescobargil.co",
+      emailAddress: "info@rodrigoescobargil.co",
       phone: "+57 (601) 620 6246",
     },
     footer: {

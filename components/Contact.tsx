@@ -76,8 +76,8 @@ export default function Contact({ lang }: Props) {
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
-                <a href={`mailto:${t.contact.email}`} className="text-sm font-sans text-[#9a9488] hover:text-[#c9a84c] transition-colors">
-                  {t.contact.email}
+                <a href={`mailto:${t.contact.emailAddress}`} className="text-sm font-sans text-[#9a9488] hover:text-[#c9a84c] transition-colors">
+                  {t.contact.emailAddress}
                 </a>
               </div>
               <div className="flex items-start gap-4">
