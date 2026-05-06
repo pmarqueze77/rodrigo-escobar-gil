@@ -18,7 +18,7 @@ export const translations = {
     about: {
       label: "Sobre mí",
       heading: "Una trayectoria construida sobre el rigor jurídico",
-      body: "Rodrigo Escobar Gil es uno de los juristas más destacados de Colombia. Doctor Cum Laude en Derecho Administrativo por la Universidad Complutense de Madrid y abogado de la Pontificia Universidad Javeriana, ejerció como Magistrado y Presidente de la Corte Constitucional durante ocho años, y como Comisionado y Relator Especial de la Comisión Interamericana de Derechos Humanos ante la OEA. Se desempeña además como árbitro en tribunales de arbitramento nacionales e internacionales. Hoy dirige Rodrigo Escobar Gil Consultores, firma especializada en derecho público, constitucional, derechos humanos y arbitraje.",
+      body: "Rodrigo Escobar Gil es uno de los juristas más destacados de Colombia. Doctor Cum Laude en Derecho Administrativo por la Universidad Complutense de Madrid y abogado de la Pontificia Universidad Javeriana, ejerció como Magistrado y Presidente de la Corte Constitucional durante ocho años —único magistrado en 32 años de historia de la Corporación con período presidencial prorrogado— y como Comisionado, Vicepresidente y Relator Especial de la Comisión Interamericana de Derechos Humanos ante la OEA. Se desempeña además como árbitro en tribunales nacionales e internacionales. Dirige Rodrigo Escobar Gil Consultores, firma especializada en derecho público, constitucional, derechos humanos y arbitraje.",
       stat1: { value: "8 años", label: "Magistrado Corte Constitucional" },
       stat2: { value: "4 años", label: "Comisionado CIDH — OEA" },
       stat3: { value: "+35 años", label: "Ejercicio profesional" },
@@ -63,6 +63,9 @@ export const translations = {
       heading: "Contribuciones al pensamiento jurídico",
       booksTitle: "Obras y artículos",
       academicTitle: "Actividad académica",
+      catedraTitle: "Cátedra universitaria",
+      sentenciasTitle: "Sentencias emblemáticas",
+      distincionesTitle: "Distinciones y condecoraciones",
       downloadCv: "Descargar CV completo",
     },
     blog: {
@@ -108,7 +111,7 @@ export const translations = {
     about: {
       label: "About",
       heading: "A career built on legal rigor",
-      body: "Rodrigo Escobar Gil is one of Colombia's most distinguished jurists. Holding a Cum Laude Doctorate in Administrative Law from the Universidad Complutense de Madrid, he served as Justice and President of the Constitutional Court of Colombia for eight years, and as Commissioner and Special Rapporteur of the Inter-American Commission on Human Rights at the OAS. He also serves as arbitrator in national and international arbitration tribunals. He now leads Rodrigo Escobar Gil Consultores, a firm specializing in public law, constitutional law, human rights and arbitration.",
+      body: "Rodrigo Escobar Gil is one of Colombia's most distinguished jurists. Holding a Cum Laude Doctorate in Administrative Law from the Universidad Complutense de Madrid, he served as Justice and President of the Constitutional Court for eight years — the only Justice in the Court's 32-year history to have his presidential term extended — and as Commissioner, Vice-President and Special Rapporteur of the Inter-American Commission on Human Rights at the OAS. He also serves as arbitrator in national and international tribunals. He leads Rodrigo Escobar Gil Consultores, specializing in public law, constitutional law, human rights and arbitration.",
       stat1: { value: "8 years", label: "Justice, Constitutional Court" },
       stat2: { value: "4 years", label: "IACHR Commissioner — OAS" },
       stat3: { value: "35+ years", label: "Professional practice" },
@@ -153,6 +156,9 @@ export const translations = {
       heading: "Contributions to legal scholarship",
       booksTitle: "Works and articles",
       academicTitle: "Academic activity",
+      catedraTitle: "University teaching",
+      sentenciasTitle: "Landmark decisions",
+      distincionesTitle: "Distinctions & honours",
       downloadCv: "Download full CV",
     },
     blog: {
